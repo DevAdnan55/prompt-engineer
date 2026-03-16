@@ -1,6 +1,6 @@
 # 🧠 Prompt Engineer
 
-A CLI tool that transforms raw, vague user input into high-quality, chain-of-thought engineered prompts using the OpenAI `gpt-4.1-nano` model.
+A CLI + web tool that transforms raw, vague user input into high-quality, chain-of-thought engineered prompts using the OpenAI `gpt-4.1-nano` model.
 
 ## How It Works
 
@@ -55,6 +55,20 @@ Get your API key at: https://platform.openai.com/api-keys
 
 ## Usage
 
+### 🖥️ Web UI (Streamlit)
+
+Run the local web app in your browser:
+
+```bash
+streamlit run app.py
+```
+
+Opens at `http://localhost:8501` with two tabs:
+- **Single Prompt** — type a raw prompt, get the engineered version in a copyable text box
+- **Batch Mode** — paste multiple prompts (one per line), engineer all at once with a live progress bar
+
+### ⌨️ CLI
+
 **Interactive mode** — type prompts one by one:
 ```bash
 python prompt_engineer.py
@@ -72,6 +86,16 @@ python prompt_engineer.py --batch
 
 **Exit interactive mode** by typing `quit`, `exit`, or `q`.
 
+## Project Structure
+
+```
+prompt-engineer/
+├── app.py                 # Streamlit web UI
+├── prompt_engineer.py     # CLI tool
+├── requirements.txt       # Dependencies
+└── .env                   # Your API key (not committed)
+```
+
 ## Requirements
 
 - Python 3.9+
@@ -79,6 +103,7 @@ python prompt_engineer.py --batch
 
 ## Tech Stack
 
+- [Streamlit](https://streamlit.io/) — local web UI
 - [OpenAI Python SDK](https://github.com/openai/openai-python)
 - [python-dotenv](https://github.com/theskumar/python-dotenv)
 - Model: `gpt-4.1-nano`
