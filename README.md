@@ -34,18 +34,12 @@ Use clear language and include an analogy to aid understanding.
 ## Project Structure
 
 ```
-prompt-engineer/
-│
-├── 🧠 Prompt Engineering
-│   ├── prompt_engineer.py      # CLI tool — interactive, batch, run modes
-│   └── app.py                  # Streamlit web UI — single & batch tabs
-│
-├── 🧪 Evaluation
-│   ├── prompt_eval.py          # CLI eval tool — LLM-as-a-judge scoring
-│   └── eval_app.py             # Streamlit eval UI — side by side comparison
-│
-├── requirements.txt            # Dependencies
-└── .env                        # API key (not committed)
+Prompt_Engineering/
+├── app.py                  # Streamlit prompt engineer UI
+├── eval_app.py             # Streamlit eval UI
+├── prompt_engineer.py      # CLI prompt engineering tool
+├── prompt_eval.py          # CLI eval tool
+└── requirements.txt        # Dependencies
 ```
 
 ## Setup
