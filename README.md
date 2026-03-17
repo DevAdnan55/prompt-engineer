@@ -1,6 +1,6 @@
 # 🧠 Prompt Engineer
 
-A CLI + web tool that transforms raw, vague user input into high-quality, chain-of-thought engineered prompts using the OpenAI `gpt-4.1-nano` model.
+A CLI + web tool that transforms raw, vague user input into high-quality, chain-of-thought engineered prompts using the OpenAI `gpt-4.1-nano` model. Includes a built-in evaluation system that measures how much prompt engineering improves output quality.
 
 ## How It Works
 
@@ -31,6 +31,23 @@ backpropagation. Finally, give a concrete real-world example.
 Use clear language and include an analogy to aid understanding.
 ```
 
+## Project Structure
+
+```
+prompt-engineer/
+│
+├── 🧠 Prompt Engineering
+│   ├── prompt_engineer.py      # CLI tool — interactive, batch, run modes
+│   └── app.py                  # Streamlit web UI — single & batch tabs
+│
+├── 🧪 Evaluation
+│   ├── prompt_eval.py          # CLI eval tool — LLM-as-a-judge scoring
+│   └── eval_app.py             # Streamlit eval UI — side by side comparison
+│
+├── requirements.txt            # Dependencies
+└── .env                        # API key (not committed)
+```
+
 ## Setup
 
 **1. Clone the repo:**
@@ -55,46 +72,42 @@ Get your API key at: https://platform.openai.com/api-keys
 
 ## Usage
 
-### 🖥️ Web UI (Streamlit)
+### 🧠 Prompt Engineer
 
-Run the local web app in your browser:
-
+**Web UI:**
 ```bash
 streamlit run app.py
 ```
-
 Opens at `http://localhost:8501` with two tabs:
 - **Single Prompt** — type a raw prompt, get the engineered version in a copyable text box
 - **Batch Mode** — paste multiple prompts (one per line), engineer all at once with a live progress bar
 
-### ⌨️ CLI
-
-**Interactive mode** — type prompts one by one:
+**CLI:**
 ```bash
-python prompt_engineer.py
+python prompt_engineer.py          # interactive mode
+python prompt_engineer.py --run    # engineer + see model response
+python prompt_engineer.py --batch  # batch mode
 ```
 
-**Interactive + run** — engineer the prompt AND see the model's response:
-```bash
-python prompt_engineer.py --run
-```
+### 🧪 Prompt Eval
 
-**Batch mode** — engineer multiple prompts at once (edit the `test_inputs` list in the file):
+Measures how much prompt engineering improves output quality using LLM-as-a-judge scoring.
+
+**Web UI:**
 ```bash
-python prompt_engineer.py --batch
+streamlit run eval_app.py
+```
+- Runs the same input twice — once raw, once engineered
+- GPT judges both on Clarity, Completeness, Specificity, and Structure (1–10 each)
+- Displays scores side by side with a winner declaration
+
+**CLI:**
+```bash
+python prompt_eval.py          # interactive mode
+python prompt_eval.py --batch  # batch mode
 ```
 
 **Exit interactive mode** by typing `quit`, `exit`, or `q`.
-
-## Project Structure
-
-```
-prompt-engineer/
-├── app.py                 # Streamlit web UI
-├── prompt_engineer.py     # CLI tool
-├── requirements.txt       # Dependencies
-└── .env                   # Your API key (not committed)
-```
 
 ## Requirements
 
